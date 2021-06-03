@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 20px;
+    }
+    .main-container {
+        width: 60vw;
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .header {
+        background-color: aqua;
+        flex-basis: 15%;
+        margin: 10px;
+    }
+    .nav {
+        flex-basis: 10%;
+        margin: 10px;
+        display: flex;
+        justify-content: space-around;
+    }
+    .nav div {
+        background-color: lightgreen;
+        width: 20%;
+    }
+    .content {
+        flex-basis: 55%;
+        margin: 10px;
+        display: flex;
+    }
+    .sidebar {
+        background-color: wheat;
+        flex-basis: 25%;
+        margin: 10px;
+    }
+    .sidebar2 {
+        background-color: darkorchid;
+        flex-basis: 25%;
+        margin: 10px;
+    }
+    .middle {
+        flex-basis: 50%;
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+    }
+
+    .middle-top {
+        flex-basis: 50%;
+        background-color: tomato;
+        margin-bottom: 10px;
+    }
+    .middle-bot {
+        flex-basis: 50%;
+        margin-top: 10px;
+        display: flex;
+    }
+    .content2 {
+        background-color: violet;
+        flex-basis: 50%;
+        margin-right: 10px;
+    }
+    .content3 {
+        background-color: yellowgreen;
+        flex-basis: 50%;
+        margin-left: 10px;
+    }
+
+    .footer {
+        background-color: sandybrown;
+        flex-basis: 20%;
+        margin: 10px;
+    }
+    .header, .nav div, .sidebar,
+    .sidebar2, .middle-top, .middle-bot div,
+    .footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<body>
+    <div class="main-container">
+        <div class="header">header</div>
+        <div class="nav">
+            <div class="nav1">nav-1</div>
+            <div class="nav2">nav-2</div>
+            <div class="nav3">nav-3</div>
+            <div class="nav4">nav-4</div>
+        </div>
+        <div class="content">
+            <div class="sidebar">sidebar</div>
+            <div class="middle">
+                <div class="middle-top">content-1</div>
+                <div class="middle-bot">
+                    <div class="content2">content-2</div>
+                    <div class="content3">content-3</div>
+                </div>
+            </div>
+            <div class="sidebar2">sidebar-2</div>
+        </div>
+        <div class="footer">footer</div>
+    </div>
+</body>
+</html>
