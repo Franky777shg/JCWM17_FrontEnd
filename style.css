@@ -1,8 +1,8 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     font-family: 'Mulish', sans-serif;
+}
+body {
+    margin: 0;
 }
 .nav-cont {
     font-family: 'Mulish', sans-serif;
@@ -119,8 +119,7 @@
 }
 .section-title-container {
     width: 900px;
-    display: flex;
-    flex-direction: column;
+    text-align: center;
 }
 .section-title-container h3 {
     font-size: 32px;
@@ -133,7 +132,7 @@
     font-size: 16px;
     text-align: center;
     color: #737B7D;
-    margin: 16px;
+    margin: 16px 0;
 }
 .section-title-container a {
     font-size: 16px;
@@ -142,9 +141,10 @@
     text-decoration: none;
 }
 .cards-cont {
-    width: 1229px;
     margin-top: 56px;
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 .card {
     width: 400px;
@@ -165,13 +165,13 @@
     width: 120px;
 }
 .card-body {
-    height: 126px;
     padding: 24px;
 }
 .card-body h5 {
     font-size: 20px;
     font-weight: 600;
     color:  #081F32;
+    margin: 0;
 }
 .card-body p {
     font-size: 13px;
