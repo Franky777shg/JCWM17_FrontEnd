@@ -1,5 +1,6 @@
 * {
     font-family: 'Mulish', sans-serif;
+    scroll-behavior: smooth;
 }
 body {
     margin: 0;
@@ -84,9 +85,7 @@ body {
     font-size: 44px;
     font-weight: 700;
     text-align: center;
-    height: 110px;
     width: 700px;
-    margin: 37px 0;
 }
 .title-content {
     font-size: 16px;
@@ -140,6 +139,9 @@ body {
     color: #3C64B1;
     text-decoration: none;
 }
+.section-title-container a:hover {
+    text-decoration: underline;
+}
 .cards-cont {
     margin-top: 56px;
     display: flex;
@@ -177,4 +179,70 @@ body {
     font-size: 13px;
     color:  #374A59;
     margin: 24px 0 13px 0;
+}
+
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+    margin: 0 90px;
+    border-top: 1px solid #DBDBDB;
+}
+
+.contact-items-container {
+    display: flex;
+    margin-top: 56px;
+}
+
+.contact-item {
+    width: 300px;
+}
+.contact-item h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 700;
+    font-size: 18px;
+    color: #373F41;
+    margin-left: 30%;
+}
+
+.contact-item p {
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-weight: 400;
+    font-size: 14px;
+    color: #373F41;
+    margin-left: 30%;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(187, 107, 217, 0.1);
+    padding: 120px 0;
+}
+
+.footer-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-item h6 {
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.footer-item a {
+    text-decoration: none;
+    color: #4F5665;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.footer-item a:hover {
+    text-decoration: underline;
 }
