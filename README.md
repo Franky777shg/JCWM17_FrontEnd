@@ -1,7 +1,9 @@
 # Lesson Today:
 
-## Mini Portofolio Project
-1. Contact Us
-2. Footer
-3. News and Blog Page
-4. Hyperlink to Page Feature, Page Blog, contact Us Section
+## All About Bootstrap
+1. Typography
+2. Button, Alert, and Carousel
+3. Table and Form
+4. Box Model
+5. Flexbox with Bootstrap
+6. Layout with Bootstrap
