@@ -1,0 +1,25 @@
+{
+    "activities": [
+        {
+            "id": 1,
+            "name": "Makan",
+            "isCompleted": false
+        },
+        {
+            "id": 2,
+            "name": "Tidur",
+            "isCompleted": false
+        },
+        {
+            "id": 3,
+            "name": "Coding",
+            "isCompleted": false
+        },
+        {
+            "name": "Nonton TV",
+            "isCompleted": false,
+            "id": 4
+        }
+    ],
+    "multi": [["data"]]
+}

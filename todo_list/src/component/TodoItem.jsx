@@ -4,12 +4,16 @@ import {
 } from 'react-bootstrap'
 
 class ToDoItem extends React.Component {
+    // componentWillUnmount() {
+    //     alert('component will unmount')
+    // }
+
     render() {
         return (
             <div style={styles.container}>
                 <p style={styles.p}>ID: {this.props.data.id}, {this.props.data.name}</p>
                 <div>
-                    <Button variant="danger" className="mr-2">Delete</Button>
+                    <Button variant="danger" onClick={this.props.delete} className="mr-2">Delete</Button>
                     <Button variant="success">Complete</Button>
                 </div>
             </div>
