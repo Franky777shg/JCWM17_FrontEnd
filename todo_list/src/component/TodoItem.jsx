@@ -14,7 +14,9 @@ class ToDoItem extends React.Component {
                 <p style={styles.p}>ID: {this.props.data.id}, {this.props.data.name}</p>
                 <div>
                     <Button variant="danger" onClick={this.props.delete} className="mr-2">Delete</Button>
-                    <Button variant="success">Complete</Button>
+                    <Button variant="success" onClick={this.props.complete} disabled={this.props.data.isCompleted}>
+                        {this.props.data.isCompleted ? "Finished" : "Completed"}
+                    </Button>
                 </div>
             </div>
         )
