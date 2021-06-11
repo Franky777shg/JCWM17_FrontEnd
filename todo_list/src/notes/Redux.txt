@@ -1,0 +1,38 @@
+-REACT-REDUX
+   -what, why, when, how
+   -instalation
+   -introduction using redux
+   -action and reducer
+   -review local vs global state
+-local storage
+   -what, why, when, how
+   -setItem
+   -getItem
+   -removeItem
+   -clear
+
+Redux step by step:
+
+yang bisa diimport dari 'react-redux' => { Provider, connect }
+
+yang bisa diimport dari 'redux' => { combineReducers, createStore }
+
+1. siapkan reducer (jangan lupa index.js)
+-di reducernya, buat initial state, kemudian buat function reducer dengan berbagai case yang diinginkan
+-di index.js reducer, import combineReducers, import semua reducer, combine semua reducer
+
+2. siapkan action (jangan lupa index.js)
+-di actionnya, buat berbagai action yang diinginkan (jangan lupa type dan payload kalau ada data yang mau dikirim)
+-di index.js action, export semuanya (*) dari action
+
+3. siapkan redux di index.js yang utama
+-import createStore, import Provider, import reducers yang sudah di combine
+-buat variabel untuk menampung global state pakai createStore
+-subscribe variabel global state untuk mengconsole log global state setiap react dipanggil (optional)
+-di dalam reactDOM.render, bungkus App dengan Provider
+-di dalam provider, masukan props store berisi global state
+
+4. Redux siap disajikan
+-import connect di page/component di mana kamu mau menggunakan data dari redux
+-import action yang kamu mau gunakan di page/component
+-buat function mapStateToProps, kemudian masukan ke connect beserta action yang ingin dipakai
