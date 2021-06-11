@@ -1,7 +1,7 @@
 {
   "activities": [
     {
-      "isCompleted": false,
+      "isCompleted": true,
       "id": 1,
       "name": "Makan"
     },
@@ -12,11 +12,11 @@
     },
     {
       "name": "Nonton TV",
-      "isCompleted": false,
+      "isCompleted": true,
       "id": 3
     },
     {
-      "name": "Ibadah",
+      "name": "Main",
       "isCompleted": false,
       "id": 4
     }
