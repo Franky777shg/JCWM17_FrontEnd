@@ -16,9 +16,24 @@
       "id": 3
     },
     {
-      "name": "Main",
+      "name": "Belajar",
       "isCompleted": false,
-      "id": 4
+      "id": 5
+    },
+    {
+      "name": "Ibadah",
+      "isCompleted": true,
+      "id": 6
+    },
+    {
+      "name": "Minum",
+      "isCompleted": false,
+      "id": 7
+    },
+    {
+      "name": "Olahraga",
+      "isCompleted": false,
+      "id": 8
     }
   ]
 }
