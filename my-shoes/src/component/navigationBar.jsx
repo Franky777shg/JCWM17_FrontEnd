@@ -7,11 +7,12 @@ import {
     Image
 } from 'react-bootstrap'
 import { LOGO } from '../assets'
+import { Link } from 'react-router-dom'
 
 class NavigationBar extends React.Component {
     render() {
         return (
-            <Navbar className="px-5" style={styles.navbar} expand="lg">
+            <Navbar fixed="top" className="px-5" style={styles.navbar} expand="lg">
                 <Navbar.Brand href="#home">
                     <Image src={LOGO.default} style={styles.image} />
                 </Navbar.Brand>
@@ -28,8 +29,8 @@ class NavigationBar extends React.Component {
                             Username
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <Dropdown.Item href="#/action-1">Login</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Register</Dropdown.Item>
+                            <Dropdown.Item as={Link} to="/login">Login</Dropdown.Item>
+                            <Dropdown.Item as={Link} to="/register">Register</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </Navbar.Collapse>
@@ -40,7 +41,7 @@ class NavigationBar extends React.Component {
 
 const styles = {
     navbar: {
-        backgroundColor: '#001970',
+        backgroundColor: 'rgba(0, 25, 112, .7)',
     },
     button: {
         backgroundColor: '#303f9f',
