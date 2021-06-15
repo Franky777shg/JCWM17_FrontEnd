@@ -45,9 +45,13 @@ class LoginPage extends React.Component {
                         />
                     </InputGroup>
                     <div style={styles.contButton}>
-                        <Button variant="primary" style={styles.button}>Login</Button>
+                        <Button variant="primary" style={styles.button}>
+                            <i class="fas fa-sign-in-alt" style={{marginRight: '10px'}}></i>
+                            Login
+                        </Button>
                     </div>
-                    <p style={styles.goToRegis}>Do You Have an Account? <Link style={{ color: '#303f9f', fontWeight: 'bold' }} to="/register">Register</Link></p>
+                    <p style={styles.goToRegis}>Do You Have an Account? <Link style={{ color: '#303f9f', fontWeight: 'bold' }} to="/register">Register Here</Link></p>
+                    <p style={styles.goToRegis}>Go to <Link style={{ color: '#303f9f', fontWeight: 'bold' }} to="/">Home</Link></p>
                 </div>
             </div>
         )
@@ -59,16 +63,15 @@ const styles = {
         background: "url(https://images.unsplash.com/photo-1506544777-64cfbe1142df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80) no-repeat center",
         backgroundSize: 'cover',
         height: '100vh',
-        display: 'flex',
-        justifyContent: 'center'
+        paddingTop: '12vh'
     },
     contForm: {
         width: '30vw',
-        height: '65vh',
-        marginTop: '15vh',
+        marginLeft: 'auto',
+        marginRight: 'auto',
         borderRadius: '10px',
-        backgroundColor: 'rgba(255, 255, 255, .5)',
-        padding: '2%'
+        backgroundColor: 'rgba(255, 255, 255, .7)',
+        padding: '1% 2%'
     },
     contButton: {
         display: 'flex',
@@ -77,13 +80,12 @@ const styles = {
     },
     button: {
         backgroundColor: '#303f9f',
-        border: 'none',
-        marginLeft: 'auto',
-        marginRight: 'auto'
+        border: 'none'
     },
     goToRegis: {
         fontWeight: 'bold',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginBottom: '0'
     }
 }
 
