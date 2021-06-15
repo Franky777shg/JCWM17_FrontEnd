@@ -1,7 +1,0 @@
-Life Cycle Method
-
-1. ketika component pertama kali mount, dia akan memanggil render
-2. render akan terpanggil PERTAMA KALI ketika ada perubahan state atau props
-3. componentDidMount akan terpanggil HANYA SEKALI setelah render terpanggil pertama kali
-4. componentDidUpdate akan terpanggil SETELAH ada perubahan state and props
-5. componentWillUnmount akan terpanggil setelah component di unmount

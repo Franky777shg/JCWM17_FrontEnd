@@ -1,0 +1,1 @@
+export const LOGO = require('./shoes_logo.png')
