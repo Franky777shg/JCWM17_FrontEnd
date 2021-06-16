@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 }
 
 const userReducer = (state = INITIAL_STATE, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case 'LOGIN':
             return {
                 ...state,
@@ -26,6 +26,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 errorLogin: false
             }
+        case 'LOG_OUT':
+            return INITIAL_STATE
         default:
             return state
     }
