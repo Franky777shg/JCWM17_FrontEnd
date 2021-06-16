@@ -28,7 +28,7 @@ class RegisPage extends React.Component {
                         <InputGroup className="mb-3">
                             <InputGroup.Prepend>
                                 <InputGroup.Text id="basic-addon1">
-                                    <i class="fas fa-user-circle"></i>
+                                    <i className="fas fa-user-circle"></i>
                                 </InputGroup.Text>
                             </InputGroup.Prepend>
                             <FormControl
@@ -39,7 +39,7 @@ class RegisPage extends React.Component {
                         <InputGroup className="mb-3">
                             <InputGroup.Prepend>
                                 <InputGroup.Text id="basic-addon1" >
-                                    <i class="fas fa-envelope"></i>
+                                    <i className="fas fa-envelope"></i>
                                 </InputGroup.Text>
                             </InputGroup.Prepend>
                             <FormControl
@@ -50,7 +50,7 @@ class RegisPage extends React.Component {
                         <InputGroup className="mb-3">
                             <InputGroup.Prepend>
                                 <InputGroup.Text id="basic-addon1" onClick={() => this.setState({ visibility1: !visibility1 })}>
-                                    {visibility1 ? <i class="fas fa-eye"></i> : <i class="fas fa-eye-slash"></i>}
+                                    {visibility1 ? <i className="fas fa-eye"></i> : <i className="fas fa-eye-slash"></i>}
                                 </InputGroup.Text>
                             </InputGroup.Prepend>
                             <FormControl
@@ -62,7 +62,7 @@ class RegisPage extends React.Component {
                         <InputGroup className="mb-3">
                             <InputGroup.Prepend>
                                 <InputGroup.Text id="basic-addon1" onClick={() => this.setState({ visibility2: !visibility2 })}>
-                                    {visibility2 ? <i class="fas fa-eye"></i> : <i class="fas fa-eye-slash"></i>}
+                                    {visibility2 ? <i className="fas fa-eye"></i> : <i className="fas fa-eye-slash"></i>}
                                 </InputGroup.Text>
                             </InputGroup.Prepend>
                             <FormControl
@@ -72,7 +72,7 @@ class RegisPage extends React.Component {
                         </InputGroup>
                         <div style={styles.contButton}>
                             <Button variant="primary" style={styles.button}>
-                            <i class="fas fa-user-plus" style={{marginRight: '10px'}}></i>
+                            <i className="fas fa-user-plus" style={{marginRight: '10px'}}></i>
                             Register
                         </Button>
                         </div>

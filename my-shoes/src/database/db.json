@@ -255,6 +255,21 @@
       "title": "Find what your love"
     }
   ],
-  "users": [],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin",
+      "email": "admin@gmail.com",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "user",
+      "password": "user123",
+      "email": "user@gmail.com",
+      "role": "user"
+    }
+  ],
   "history": []
 }
