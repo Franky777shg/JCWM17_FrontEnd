@@ -18,6 +18,12 @@ class LoginPage extends React.Component {
         }
     }
 
+    clickEnter = (e) => {
+        if(e.key === 'Enter') {
+            this.onLogin()
+        }
+    }
+
     onLogin = () => {
         // ambil data dari input username dan password
         let username = this.refs.username.value
@@ -56,6 +62,7 @@ class LoginPage extends React.Component {
                         <FormControl
                             placeholder="Input Here"
                             ref="username"
+                            onKeyDown={(e) => this.clickEnter(e)}
                         />
                     </InputGroup>
                     <label>Password</label>
@@ -69,6 +76,7 @@ class LoginPage extends React.Component {
                             placeholder="Input Here"
                             type={visibility ? "text" : "password"}
                             ref="password"
+                            onKeyDown={(e) => this.clickEnter(e)}
                         />
                     </InputGroup>
                     <div style={styles.contButton}>
