@@ -2,7 +2,9 @@ import React from 'react'
 import {
     FormControl,
     InputGroup,
-    Button
+    Button,
+    Form,
+    Modal
 } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
@@ -11,8 +13,49 @@ class RegisPage extends React.Component {
         super(props)
         this.state = {
             visibility1: false,
-            visibility2: false
+            visibility2: false,
+            usernameErr: [false, ""],
+            emailErr: [false, ""],
+            passErr: [false, ""],
+            registerErr: [false, ""]
         }
+    }
+
+    userValid = (e) => {
+        // console.log(e)
+        let symb = /[!@#$%^&*]/
+
+        if (symb.test(e.target.value) || e.target.value.length < 6) return this.setState({ usernameErr: [true, "Username must have 6 character & can't include symbol"] })
+
+        this.setState({ usernameErr: [false, ""] })
+    }
+
+    emailValid = (e) => {
+        let regex = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if (!regex.test(e.target.value)) return this.setState({ emailErr: [true, "Email not valid"] })
+
+        this.setState({ emailErr: [false, ""] })
+    }
+
+    passValid = (e) => {
+        let number = /[0-9]/
+        let symb = /[!@#$%^&*]/
+
+        if (!symb.test(e.target.value) || !number.test(e.target.value) || e.target.value.length < 6) return this.setState({ passErr: [true, "Password must have 6 character, include number and symbol"] })
+
+        this.setState({ passErr: [false, ""] })
+    }
+
+    onRegister = () => {
+        // cek apakah semua input sudah terisi
+        if (!this.refs.username.value || !this.refs.email.value || !this.refs.password.value) return this.setState({ registerErr: [true, "Please input all of data"] })
+
+        // cek apakah ada error dalam validasi input user
+        if (this.state.usernameErr[0] || this.state.emailErr[0] || this.state.passErr[0]) return this.setState({ registerErr: [true, "Make sure all of your data is valid"] })
+
+        // cek apakah confirm password sama dengan password
+        if (this.refs.confpassword.value !== this.refs.password.value) return this.setState({ registerErr: [true, "Confirm password doesn't match with password"] })
     }
 
     render() {
@@ -25,7 +68,7 @@ class RegisPage extends React.Component {
                         <h1>Need Shoes?</h1>
                         <h3 className="mb-4">Register Now!</h3>
                         <label>Username</label>
-                        <InputGroup className="mb-3">
+                        <InputGroup>
                             <InputGroup.Prepend>
                                 <InputGroup.Text id="basic-addon1">
                                     <i className="fas fa-user-circle"></i>
@@ -33,10 +76,15 @@ class RegisPage extends React.Component {
                             </InputGroup.Prepend>
                             <FormControl
                                 placeholder="Input Here"
+                                onChange={(e) => this.userValid(e)}
+                                ref="username"
                             />
                         </InputGroup>
+                        <Form.Text style={styles.textErr}>
+                            {this.state.usernameErr[0] ? this.state.usernameErr[1] : ""}
+                        </Form.Text>
                         <label>Email</label>
-                        <InputGroup className="mb-3">
+                        <InputGroup>
                             <InputGroup.Prepend>
                                 <InputGroup.Text id="basic-addon1" >
                                     <i className="fas fa-envelope"></i>
@@ -44,10 +92,15 @@ class RegisPage extends React.Component {
                             </InputGroup.Prepend>
                             <FormControl
                                 placeholder="Input Here"
+                                onChange={(e) => this.emailValid(e)}
+                                ref="email"
                             />
                         </InputGroup>
+                        <Form.Text style={styles.textErr}>
+                            {this.state.emailErr[0] ? this.state.emailErr[1] : ""}
+                        </Form.Text>
                         <label>Password</label>
-                        <InputGroup className="mb-3">
+                        <InputGroup>
                             <InputGroup.Prepend>
                                 <InputGroup.Text id="basic-addon1" onClick={() => this.setState({ visibility1: !visibility1 })}>
                                     {visibility1 ? <i className="fas fa-eye"></i> : <i className="fas fa-eye-slash"></i>}
@@ -56,8 +109,13 @@ class RegisPage extends React.Component {
                             <FormControl
                                 placeholder="Input Here"
                                 type={visibility1 ? "text" : "password"}
+                                onChange={(e) => this.passValid(e)}
+                                ref="password"
                             />
                         </InputGroup>
+                        <Form.Text style={styles.textErr}>
+                            {this.state.passErr[0] ? this.state.passErr[1] : ""}
+                        </Form.Text>
                         <label>Confirm Password</label>
                         <InputGroup className="mb-3">
                             <InputGroup.Prepend>
@@ -68,18 +126,30 @@ class RegisPage extends React.Component {
                             <FormControl
                                 placeholder="Input Here"
                                 type={visibility2 ? "text" : "password"}
+                                ref="confpassword"
                             />
                         </InputGroup>
                         <div style={styles.contButton}>
-                            <Button variant="primary" style={styles.button}>
-                            <i className="fas fa-user-plus" style={{marginRight: '10px'}}></i>
-                            Register
-                        </Button>
+                            <Button variant="primary" style={styles.button} onClick={this.onRegister}>
+                                <i className="fas fa-user-plus" style={{ marginRight: '10px' }}></i>
+                                Register
+                            </Button>
                         </div>
                         <p style={styles.goToRegis}>Already Have an Account? <Link style={{ color: '#303f9f', fontWeight: 'bold' }} to="/login">Login Here</Link></p>
                         <p style={styles.goToRegis}>Go to <Link style={{ color: '#303f9f', fontWeight: 'bold' }} to="/">Home</Link></p>
                     </div>
                 </div>
+                <Modal show={this.state.registerErr[0]}>
+                    <Modal.Header>
+                        <Modal.Title>Error!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>{this.state.registerErr[1]}</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={() => this.setState({ registerErr: [false, ""] })}>
+                            OK
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         )
     }
@@ -124,6 +194,10 @@ const styles = {
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: '0'
+    },
+    textErr: {
+        color: 'red',
+        marginBottom: '15px'
     }
 }
 
