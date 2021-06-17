@@ -269,6 +269,20 @@
       "password": "frengky123",
       "email": "frengky@gmail.com",
       "role": "user"
+    },
+    {
+      "username": "yoona01",
+      "email": "yoona01@gmail.com",
+      "password": "yoona1!",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "username": "jihyo02",
+      "email": "jihyo@gmail.com",
+      "password": "jihyo1!",
+      "role": "user",
+      "id": 4
     }
   ],
   "history": []

@@ -6,7 +6,9 @@ import {
     Form,
     Modal
 } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { register, resetRegErr } from '../redux/actions'
 
 class RegisPage extends React.Component {
     constructor(props) {
@@ -48,17 +50,35 @@ class RegisPage extends React.Component {
     }
 
     onRegister = () => {
+        let username = this.refs.username.value
+        let email = this.refs.email.value
+        let password = this.refs.password.value
+
         // cek apakah semua input sudah terisi
-        if (!this.refs.username.value || !this.refs.email.value || !this.refs.password.value) return this.setState({ registerErr: [true, "Please input all of data"] })
+        if (!username || !email || !password) return this.setState({ registerErr: [true, "Please input all of data"] })
 
         // cek apakah ada error dalam validasi input user
         if (this.state.usernameErr[0] || this.state.emailErr[0] || this.state.passErr[0]) return this.setState({ registerErr: [true, "Make sure all of your data is valid"] })
 
         // cek apakah confirm password sama dengan password
-        if (this.refs.confpassword.value !== this.refs.password.value) return this.setState({ registerErr: [true, "Confirm password doesn't match with password"] })
+        if (this.refs.confpassword.value !== password) return this.setState({ registerErr: [true, "Confirm password doesn't match with password"] })
+
+        // siapkan object data user
+        let obj = {
+            username,
+            email,
+            password,
+            role: 'user'
+        }
+
+        // action untuk register
+        this.props.register(username, email, obj)
     }
 
     render() {
+        if (this.props.successReg) {
+            return <Redirect to="/login" />
+        }
         const { visibility1, visibility2 } = this.state
         return (
             <div style={styles.contUtama}>
@@ -150,6 +170,17 @@ class RegisPage extends React.Component {
                         </Button>
                     </Modal.Footer>
                 </Modal>
+                <Modal show={this.props.errorReg[0]}>
+                    <Modal.Header>
+                        <Modal.Title>Error!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>{this.props.errorReg[1]}</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={this.props.resetRegErr}>
+                            OK
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         )
     }
@@ -201,4 +232,11 @@ const styles = {
     }
 }
 
-export default RegisPage
+const mapStateToProps = (state) => {
+    return {
+        errorReg: state.userReducer.errorRegister,
+        successReg: state.userReducer.successRegister
+    }
+}
+
+export default connect(mapStateToProps, { register, resetRegErr })(RegisPage)
