@@ -31,7 +31,7 @@ class HomePage extends React.Component {
         console.log(this.state.carousels)
         console.log(this.state.products)
         return (
-            <div style={{backgroundColor: '#A3DDCB',}}>
+            <div style={{ backgroundColor: '#A3DDCB', }}>
                 <NavigationBar />
                 <div style={styles.container}>
                     <Carousel style={styles.carousel}>
@@ -52,7 +52,7 @@ class HomePage extends React.Component {
                         })}
                     </Carousel>
                     <div style={styles.sectProducts}>
-                        <h1 style={styles.titleProduct}>Our Products</h1>
+                        <h1>Our Products</h1>
                         <div style={styles.contProducts}>
                             {this.state.products.map(item => {
                                 console.log(item.name.length)
@@ -97,13 +97,12 @@ class HomePage extends React.Component {
                         </div>
                     </div>
                     <div>
-                        <h6 style={{textAlign: 'center'}}>Copyright@Franky777shg</h6>
+                        <h6 style={{ textAlign: 'center', margin: '0' }}>Copyright@Franky777shg</h6>
                     </div>
                 </footer>
             </div>
         )
     }
-
 }
 
 const styles = {
@@ -143,10 +142,6 @@ const styles = {
         padding: '15px'
     },
     cardBody: {
-        // display: 'flex',
-        // flexDirection: 'column',
-        // justifyContent: 'space-between',
-        // backgroundColor: 'salmon'
         backgroundColor: '#03506F',
         borderRadius: '15px 15px 0 0',
         color: '#f8f9fa'
@@ -159,9 +154,6 @@ const styles = {
     contButton: {
         display: 'flex',
         justifyContent: 'space-around'
-    },
-    titleProduct: {
-        // width: 'auto'
     },
     footer: {
         backgroundColor: "#FFE3DE",
