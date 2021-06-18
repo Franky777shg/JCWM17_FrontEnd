@@ -27,7 +27,7 @@ class NavigationBar extends React.Component {
                     </Nav>
                     <Button variant="outline-light"><i className="fas fa-shopping-cart"></i></Button>
                     <Dropdown style={{ marginLeft: '10px' }}>
-                        <Dropdown.Toggle style={styles.button} id="dropdown-basic">
+                        <Dropdown.Toggle variant="outline-light" id="dropdown-basic">
                             {this.props.username ? this.props.username : "Username"}
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
@@ -54,11 +54,7 @@ class NavigationBar extends React.Component {
 
 const styles = {
     navbar: {
-        backgroundColor: 'rgba(0, 25, 112, .7)',
-    },
-    button: {
-        backgroundColor: '#303f9f',
-        border: 'none'
+        backgroundColor: '#0A043C',
     },
     image: {
         height: '40px'
