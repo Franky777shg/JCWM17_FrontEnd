@@ -29,13 +29,14 @@ class DetailPage extends React.Component {
 
     onChangeQty = (e) => {
         let value = +e.target.value
-        let minQty = 1
         let maxQty = this.state.product.stock
 
         if (value < 1) {
-            this.setState({ qty: minQty })
+            this.setState({ qty: 1 })
         } else if (value > maxQty) {
             this.setState({ qty: maxQty })
+        } else {
+            this.setState({ qty: value })
         }
     }
 
@@ -74,7 +75,7 @@ class DetailPage extends React.Component {
         }
 
         return (
-            <div style={{ backgroundColor: '#A3DDCB', height: '100vh', paddingTop: '10vh' }}>
+            <div style={{ backgroundColor: '#A3DDCB', height: '110vh', paddingTop: '10vh' }}>
                 <NavigationBar />
                 <div style={styles.contTitle}>
                     <h1>Detail Page</h1>
@@ -105,22 +106,25 @@ class DetailPage extends React.Component {
                         <p><strong>Description:</strong> {product.description ? product.description : ""}</p>
                         <p><strong>Price:</strong> IDR {product.price ? product.price.toLocaleString() + ",00" : ""}</p>
                         <p><strong>Stock:</strong> {product.stock ? product.stock : ""}</p>
-                        <p><strong>Quantity:</strong></p>
-                        <div style={{ display: 'flex', width: '30%', justifyContent: 'space-around' }}>
-                            <Button disabled={qty <= 1 ? true : false} variant="outline-danger" onClick={this.onMinus}>
-                                <i className="fas fa-minus"></i>
-                            </Button>
-                            <FormControl
-                                style={{ width: '50%' }}
-                                value={qty}
-                                onChange={(e) => this.onChangeQty(e)}
-                            />
-                            <Button disabled={qty === product.stock ? true : false} variant="outline-success" onClick={this.onPlus}>
-                                <i className="fas fa-plus"></i>
-                            </Button>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <p style={{ marginBottom: '0' }}><strong>Quantity:</strong></p>
+                            <div style={{ display: 'flex', width: '30%', justifyContent: 'space-around' }}>
+                                <Button disabled={qty <= 1 ? true : false} variant="outline-danger" onClick={this.onMinus}>
+                                    <i className="fas fa-minus"></i>
+                                </Button>
+                                <FormControl
+                                    style={{ width: '50%' }}
+                                    value={qty}
+                                    onChange={(e) => this.onChangeQty(e)}
+                                />
+                                <Button disabled={qty === product.stock ? true : false} variant="outline-success" onClick={this.onPlus}>
+                                    <i className="fas fa-plus"></i>
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </div>
+                {/* <div style={{ height: '20vh', backgroundColor: '#A3DDCB' }}></div> */}
             </div>
         )
     }
@@ -133,6 +137,7 @@ const styles = {
         alignItems: 'center',
         padding: '1%',
         height: '10vh',
+        marginTop: '10px'
     },
     contImg: {
         backgroundColor: '#03506F',
