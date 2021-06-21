@@ -8,13 +8,14 @@ import {
 } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { checkout } from '../redux/actions'
 
 class DetailPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             product: {},
-            qty: 0,
+            qty: 1,
             toLogin: false
         }
     }
@@ -35,11 +36,22 @@ class DetailPage extends React.Component {
     }
 
     onCheckout = () => {
-        console.log(this.props.username)
-
+        const { product, qty } = this.state
         if (!this.props.username) {
             return this.setState({ toLogin: true })
         }
+
+        // siapkan data produk yang mau kita push ke dalam cart user yang sedang aktif
+        let obj = {
+            id: product.id,
+            name: product.name,
+            image: product.images[0],
+            price: product.price,
+            qty
+        }
+        // console.log(obj)
+
+        this.props.checkout(this.props.id, obj)
     }
 
     render() {
@@ -54,7 +66,7 @@ class DetailPage extends React.Component {
                 <NavigationBar />
                 <div style={styles.contTitle}>
                     <h1>Detail Page</h1>
-                    <Button variant="outline-light" onClick={this.onCheckout}>Checkout</Button>
+                    <Button variant="outline-light" onClick={this.onCheckout}>Add to Cart</Button>
                 </div>
                 <div style={{ display: 'flex' }}>
                     <div style={styles.contImg}>
@@ -126,7 +138,8 @@ const styles = {
 
 const mapStateToProps = (state) => {
     return {
-        username: state.userReducer.username
+        username: state.userReducer.username,
+        id: state.userReducer.id
     }
 }
-export default connect(mapStateToProps)(DetailPage)
+export default connect(mapStateToProps, { checkout })(DetailPage)
