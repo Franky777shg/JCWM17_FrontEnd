@@ -5,6 +5,7 @@ import {
     Card,
     Button
 } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import NavigationBar from '../component/navigationBar'
 
 class HomePage extends React.Component {
@@ -28,16 +29,16 @@ class HomePage extends React.Component {
     }
 
     render() {
-        console.log(this.state.carousels)
-        console.log(this.state.products)
+        // console.log(this.state.carousels)
+        // console.log(this.state.products)
         return (
             <div style={{ backgroundColor: '#A3DDCB', }}>
                 <NavigationBar />
-                <div style={styles.container}>
+                <div>
                     <Carousel style={styles.carousel}>
-                        {this.state.carousels.map(item => {
+                        {this.state.carousels.map((item, index) => {
                             return (
-                                <Carousel.Item>
+                                <Carousel.Item key={index}>
                                     <img
                                         className="d-block"
                                         src={item.image}
@@ -54,10 +55,9 @@ class HomePage extends React.Component {
                     <div style={styles.sectProducts}>
                         <h1>Our Products</h1>
                         <div style={styles.contProducts}>
-                            {this.state.products.map(item => {
-                                console.log(item.name.length)
+                            {this.state.products.map((item, index) => {
                                 return (
-                                    <Card style={{ width: '18rem', marginBottom: '15px', marginTop: '15px' }}>
+                                    <Card style={{ width: '18rem', marginBottom: '15px', marginTop: '15px' }} key={index}>
                                         <div style={styles.cardImg}>
                                             <Card.Img variant="top" src={item.images[0]} />
                                         </div>
@@ -65,9 +65,11 @@ class HomePage extends React.Component {
                                             <Card.Title style={styles.cardTitle}>{item.name}</Card.Title>
                                             <Card.Text><strong>IDR {item.price.toLocaleString()}</strong></Card.Text>
                                             <div style={styles.contButton}>
-                                                <Button variant="outline-light"><i class="far fa-bookmark"></i></Button>
                                                 <Button variant="outline-light">
-                                                    <i class="fas fa-cart-plus"></i> Buy Now
+                                                    <i className="far fa-bookmark"></i>
+                                                </Button>
+                                                <Button variant="outline-light" as={Link} to={`/detail?${item.id}`}>
+                                                    <i className="fas fa-cart-plus"></i> Buy Now
                                                 </Button>
                                             </div>
                                         </Card.Body>
@@ -106,10 +108,6 @@ class HomePage extends React.Component {
 }
 
 const styles = {
-    container: {
-        marginTop: '7vh',
-        paddingTop: '3vh'
-    },
     carousel: {
         height: '90vh',
         width: '90vw',

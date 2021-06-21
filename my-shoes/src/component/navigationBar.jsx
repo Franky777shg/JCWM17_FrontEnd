@@ -14,14 +14,14 @@ import { logout } from '../redux/actions'
 class NavigationBar extends React.Component {
     render() {
         return (
-            <Navbar fixed="top" className="px-5" style={styles.navbar} expand="lg">
+            <Navbar className="px-5" style={styles.navbar} expand="lg">
                 <Navbar.Brand href="#home">
                     <Image src={LOGO.default} style={styles.image} />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="#home" style={styles.navLink}>Home</Nav.Link>
+                        <Nav.Link as={Link} to="/" style={styles.navLink}>Home</Nav.Link>
                         <Nav.Link href="#home" style={styles.navLink}>Product</Nav.Link>
                         <Nav.Link href="#home" style={styles.navLink}>Contact Us</Nav.Link>
                     </Nav>

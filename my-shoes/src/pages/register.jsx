@@ -68,7 +68,8 @@ class RegisPage extends React.Component {
             username,
             email,
             password,
-            role: 'user'
+            role: 'user',
+            cart: []
         }
 
         // action untuk register
