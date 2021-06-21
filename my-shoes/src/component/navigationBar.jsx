@@ -14,7 +14,7 @@ import { logout } from '../redux/actions'
 class NavigationBar extends React.Component {
     render() {
         return (
-            <Navbar className="px-5" style={styles.navbar} expand="lg">
+            <Navbar fixed="top" className="px-5" style={styles.navbar} expand="lg">
                 <Navbar.Brand href="#home">
                     <Image src={LOGO.default} style={styles.image} />
                 </Navbar.Brand>

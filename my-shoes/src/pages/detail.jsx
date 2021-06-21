@@ -27,6 +27,18 @@ class DetailPage extends React.Component {
             })
     }
 
+    onChangeQty = (e) => {
+        let value = +e.target.value
+        let minQty = 1
+        let maxQty = this.state.product.stock
+
+        if (value < 1) {
+            this.setState({ qty: minQty })
+        } else if (value > maxQty) {
+            this.setState({ qty: maxQty })
+        }
+    }
+
     onMinus = () => {
         this.setState({ qty: this.state.qty - 1 })
     }
@@ -62,15 +74,15 @@ class DetailPage extends React.Component {
         }
 
         return (
-            <>
+            <div style={{ backgroundColor: '#A3DDCB', height: '100vh', paddingTop: '10vh' }}>
                 <NavigationBar />
                 <div style={styles.contTitle}>
                     <h1>Detail Page</h1>
-                    <Button variant="outline-light" onClick={this.onCheckout}>Add to Cart</Button>
+                    <Button variant="outline-dark" onClick={this.onCheckout}>Add to Cart</Button>
                 </div>
-                <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex', marginLeft: '1%', marginRight: '1%' }}>
                     <div style={styles.contImg}>
-                        <Carousel style={{ height: '70vh' }}>
+                        <Carousel style={{ height: '75vh' }}>
                             {(product.images ? product.images : []).map((item, index) => {
                                 return (
                                     <Carousel.Item key={index}>
@@ -86,26 +98,30 @@ class DetailPage extends React.Component {
                         </Carousel>
                     </div>
                     <div style={styles.contDesc}>
-                        <h1>{product.name ? product.name : ""}</h1>
-                        <p>Category: {product.category ? product.category : ""}</p>
-                        <p>Brand: {product.brand ? product.brand : ""}</p>
-                        <p>Color: {product.colour ? product.colour : ""}</p>
-                        <p>Description: {product.description ? product.description : ""}</p>
-                        <p>Price: {product.price ? product.price : ""}</p>
-                        <p>Stock: {product.stock ? product.stock : ""}</p>
-                        <p>Quantity:</p>
+                        <h1 style={{ border: '5px solid white', borderRadius: '10px', padding: '1%' }}>{product.name ? product.name : ""}</h1>
+                        <p><strong>Category:</strong> {product.category ? product.category : ""}</p>
+                        <p><strong>Brand:</strong> {product.brand ? product.brand : ""}</p>
+                        <p><strong>Color:</strong> {product.colour ? product.colour : ""}</p>
+                        <p><strong>Description:</strong> {product.description ? product.description : ""}</p>
+                        <p><strong>Price:</strong> IDR {product.price ? product.price.toLocaleString() + ",00" : ""}</p>
+                        <p><strong>Stock:</strong> {product.stock ? product.stock : ""}</p>
+                        <p><strong>Quantity:</strong></p>
                         <div style={{ display: 'flex', width: '30%', justifyContent: 'space-around' }}>
-                            <Button onClick={this.onMinus}>-</Button>
+                            <Button disabled={qty <= 1 ? true : false} variant="outline-danger" onClick={this.onMinus}>
+                                <i className="fas fa-minus"></i>
+                            </Button>
                             <FormControl
                                 style={{ width: '50%' }}
                                 value={qty}
-                                onChange={(e) => this.setState({ qty: +e.target.value })}
+                                onChange={(e) => this.onChangeQty(e)}
                             />
-                            <Button onClick={this.onPlus}>+</Button>
+                            <Button disabled={qty === product.stock ? true : false} variant="outline-success" onClick={this.onPlus}>
+                                <i className="fas fa-plus"></i>
+                            </Button>
                         </div>
                     </div>
                 </div>
-            </>
+            </div>
         )
     }
 }
@@ -116,23 +132,23 @@ const styles = {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '1%',
-        backgroundColor: '#03506F',
-        color: '#f8f9fa'
+        height: '10vh',
     },
     contImg: {
         backgroundColor: '#03506F',
-        flexBasis: '40%'
+        flexBasis: '40%',
+        borderRadius: '10px'
     },
     contDesc: {
-        backgroundColor: 'lightblue',
         flexBasis: '60%',
-        padding: '1%'
+        padding: '0 1% 0 1%',
     },
     img: {
         height: '70%',
         width: '70%',
         marginLeft: 'auto',
         marginRight: 'auto',
+        marginTop: '5%'
     },
 }
 

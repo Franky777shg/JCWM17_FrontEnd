@@ -32,7 +32,7 @@ class HomePage extends React.Component {
         // console.log(this.state.carousels)
         // console.log(this.state.products)
         return (
-            <div style={{ backgroundColor: '#A3DDCB', }}>
+            <div style={{ backgroundColor: '#A3DDCB', paddingTop: '10vh'}}>
                 <NavigationBar />
                 <div>
                     <Carousel style={styles.carousel}>
@@ -63,7 +63,7 @@ class HomePage extends React.Component {
                                         </div>
                                         <Card.Body style={styles.cardBody}>
                                             <Card.Title style={styles.cardTitle}>{item.name}</Card.Title>
-                                            <Card.Text><strong>IDR {item.price.toLocaleString()}</strong></Card.Text>
+                                            <Card.Text><strong>IDR {item.price.toLocaleString()},00</strong></Card.Text>
                                             <div style={styles.contButton}>
                                                 <Button variant="outline-light">
                                                     <i className="far fa-bookmark"></i>
@@ -141,7 +141,7 @@ const styles = {
     },
     cardBody: {
         backgroundColor: '#03506F',
-        borderRadius: '15px 15px 0 0',
+        borderRadius: '15px 15px 3px 3px',
         color: '#f8f9fa'
     },
     cardTitle: {
