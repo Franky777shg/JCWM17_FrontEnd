@@ -7,6 +7,7 @@ import HomePage from './pages/home';
 import LoginPage from './pages/login';
 import RegisPage from './pages/register';
 import DetailPage from './pages/detail';
+import CartPage from './pages/cart';
 
 // import action
 import { keepLogin } from './redux/actions'
@@ -19,12 +20,13 @@ class App extends React.Component {
   
   render() {
     return (
-      <div>
+      <div style={{backgroundColor: '#A3DDCB'}}>
         <Switch>
           <Route path="/" component={HomePage} exact />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisPage} />
           <Route path="/detail" component={DetailPage} />
+          <Route path="/cart" component={CartPage} />
         </Switch>
       </div>
     );

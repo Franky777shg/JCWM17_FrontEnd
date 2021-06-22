@@ -277,7 +277,24 @@
       "password": "yoona1!",
       "role": "user",
       "id": 3,
-      "cart": []
+      "cart": [
+        {
+          "id": 1,
+          "name": "NIKE AIR ZOOM-TYPE",
+          "image": "https://kickz.akamaized.net/en/media/images/p/1200/nike-AIR_ZOOM_TYPE-BLACK_SUMMIT_WHITE_MENTA_ORANGE_TRANCE-1.jpg",
+          "price": 2500000,
+          "qty": 4,
+          "stock": 13
+        },
+        {
+          "id": 12,
+          "name": "ADIDAS PERFORMANCE MARQUEE MID - VEGAS",
+          "image": "https://kickz.akamaized.net/en/media/images/p/1200/adidas_performance-MARQUEE_MID_VEGAS-legend_ink_ftwr_white_flash_orange-3.jpg",
+          "price": 1345650,
+          "qty": 2,
+          "stock": 10
+        }
+      ]
     },
     {
       "username": "jihyo02",

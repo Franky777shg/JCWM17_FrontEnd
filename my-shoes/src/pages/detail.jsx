@@ -16,7 +16,8 @@ class DetailPage extends React.Component {
         this.state = {
             product: {},
             qty: 1,
-            toLogin: false
+            toLogin: false,
+            toCart: false
         }
     }
 
@@ -60,18 +61,25 @@ class DetailPage extends React.Component {
             name: product.name,
             image: product.images[0],
             price: product.price,
-            qty
+            qty,
+            stock: product.stock
         }
         // console.log(obj)
 
         this.props.checkout(this.props.id, obj)
+
+        this.setState({ toCart: true })
     }
 
     render() {
-        const { product, qty, toLogin } = this.state
+        const { product, qty, toLogin, toCart } = this.state
+
+        console.log(this.props.dataUser)
 
         if (toLogin) {
             return <Redirect to="/login" />
+        } else if (toCart) {
+            return <Redirect to="cart" />
         }
 
         return (
@@ -124,7 +132,6 @@ class DetailPage extends React.Component {
                         </div>
                     </div>
                 </div>
-                {/* <div style={{ height: '20vh', backgroundColor: '#A3DDCB' }}></div> */}
             </div>
         )
     }
@@ -160,7 +167,8 @@ const styles = {
 const mapStateToProps = (state) => {
     return {
         username: state.userReducer.username,
-        id: state.userReducer.id
+        id: state.userReducer.id,
+        dataUser: state.userReducer
     }
 }
 export default connect(mapStateToProps, { checkout })(DetailPage)
