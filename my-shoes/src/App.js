@@ -8,6 +8,7 @@ import LoginPage from './pages/login';
 import RegisPage from './pages/register';
 import DetailPage from './pages/detail';
 import CartPage from './pages/cart';
+import HistoryPage from './pages/history';
 
 // import action
 import { keepLogin } from './redux/actions'
@@ -27,6 +28,7 @@ class App extends React.Component {
           <Route path="/register" component={RegisPage} />
           <Route path="/detail" component={DetailPage} />
           <Route path="/cart" component={CartPage} />
+          <Route path="/history" component={HistoryPage} />
         </Switch>
       </div>
     );

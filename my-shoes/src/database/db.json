@@ -288,5 +288,127 @@
       "cart": []
     }
   ],
-  "history": []
+  "history": [
+    {
+      "idUser": 4,
+      "username": "jihyo02",
+      "time": "6/23/2021, 10:46:57 AM",
+      "products": [
+        {
+          "id": 6,
+          "name": "NIKE W AIR MAX 90",
+          "image": "https://kickz.akamaized.net/en/media/images/p/1200/nike-W_AIR_MAX_90-WHITE_PARTICLE_GREY_ROSE_BLACK-1.jpg",
+          "price": 1987300,
+          "qty": 1,
+          "stock": 10
+        },
+        {
+          "id": 4,
+          "name": "JORDAN AIR JORDAN 14 RETRO",
+          "image": "https://kickz.akamaized.net/en/media/images/p/1200/Air_Jordan_14_Retro-BLACK_GYM_RED_WHITE_OFF_WHITE-1.jpg",
+          "price": 2680000,
+          "qty": 1,
+          "stock": 10
+        }
+      ],
+      "id": 2
+    },
+    {
+      "idUser": 3,
+      "username": "yoona01",
+      "time": "6/23/2021, 10:53:25 AM",
+      "products": [
+        {
+          "id": 3,
+          "name": "NIKE KYRIE 6",
+          "image": "https://kickz.akamaized.net/en/media/images/p/1200/nike-KYRIE_6-WHITE_BLUE_FURY_OPTI_YELLOW_DIGITAL_PINK-1.jpg",
+          "price": 1780000,
+          "qty": 1,
+          "stock": 9
+        },
+        {
+          "id": 12,
+          "name": "ADIDAS PERFORMANCE MARQUEE MID - VEGAS",
+          "image": "https://kickz.akamaized.net/en/media/images/p/1200/adidas_performance-MARQUEE_MID_VEGAS-legend_ink_ftwr_white_flash_orange-3.jpg",
+          "price": 1345650,
+          "qty": 1,
+          "stock": 10
+        }
+      ],
+      "id": 3
+    },
+    {
+      "idUser": 3,
+      "username": "yoona01",
+      "time": "6/23/2021, 11:36:46 AM",
+      "products": [
+        {
+          "id": 1,
+          "name": "NIKE AIR ZOOM-TYPE",
+          "image": "https://kickz.akamaized.net/en/media/images/p/1200/nike-AIR_ZOOM_TYPE-BLACK_SUMMIT_WHITE_MENTA_ORANGE_TRANCE-1.jpg",
+          "price": 2500000,
+          "qty": 1,
+          "stock": 13
+        },
+        {
+          "id": 9,
+          "name": "NIKE WMNS NIKE AIR MAX 90 SLIDE",
+          "image": "https://kickz.akamaized.net/en/media/images/p/1200/WMNS_NIKE_AIR_MAX_90_SLIDE-WHITE_SMOKE_GREY_ROSE_LT_SMOKE_GREY-1.jpg",
+          "price": 879650,
+          "qty": 1,
+          "stock": 15
+        }
+      ],
+      "id": 4
+    },
+    
+    {
+      "idUser": 2,
+      "username": "frengky",
+      "time": "6/23/2021, 11:51:19 AM",
+      "products": [
+        {
+          "id": 1,
+          "name": "NIKE AIR ZOOM-TYPE",
+          "image": "https://kickz.akamaized.net/en/media/images/p/1200/nike-AIR_ZOOM_TYPE-BLACK_SUMMIT_WHITE_MENTA_ORANGE_TRANCE-1.jpg",
+          "price": 2500000,
+          "qty": 1,
+          "stock": 13
+        }
+      ],
+      "id": 7
+    },
+    {
+      "idUser": 2,
+      "username": "frengky",
+      "time": "6/23/2021, 11:53:03 AM",
+      "products": [
+        {
+          "id": 3,
+          "name": "NIKE KYRIE 6",
+          "image": "https://kickz.akamaized.net/en/media/images/p/1200/nike-KYRIE_6-WHITE_BLUE_FURY_OPTI_YELLOW_DIGITAL_PINK-1.jpg",
+          "price": 1780000,
+          "qty": 1,
+          "stock": 9
+        }
+      ],
+      "id": 8
+    },
+    {
+      "idUser": 4,
+      "username": "jihyo02",
+      "time": "6/23/2021, 12:37:42 PM",
+      "products": [
+        {
+          "id": 6,
+          "name": "NIKE W AIR MAX 90",
+          "image": "https://kickz.akamaized.net/en/media/images/p/1200/nike-W_AIR_MAX_90-WHITE_PARTICLE_GREY_ROSE_BLACK-1.jpg",
+          "price": 1987300,
+          "qty": 1,
+          "stock": 10
+        }
+      ],
+      "id": 10
+    }
+  ]
 }

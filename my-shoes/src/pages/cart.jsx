@@ -9,7 +9,7 @@ import {
     FormControl,
     Modal
 } from 'react-bootstrap'
-import { delCart, saveCart } from '../redux/actions'
+import { delCart, saveCart, checkout } from '../redux/actions'
 
 class CartPage extends React.Component {
     constructor(props) {
@@ -18,7 +18,8 @@ class CartPage extends React.Component {
             indexEdit: null,
             qty: null,
             error: [false, ""],
-            askPass: false
+            askPass: false,
+            toHistory: false
         }
     }
 
@@ -134,17 +135,33 @@ class CartPage extends React.Component {
     }
 
     onOKPass = () => {
+        // authorize untuk password user
         if (this.refs.passwordUser.value !== this.props.password) {
             return this.setState({ error: [true, "Your Password Doesn't Match"] })
         }
+
+        // siapkan data yang mau di push ke history
+        let data = {
+            idUser: this.props.id,
+            username: this.props.username,
+            time: new Date().toLocaleString(),
+            products: this.props.cart
+        }
+
+        this.props.checkout(this.props.id, data)
+
+        this.setState({ askPass: false, toHistory: true })
     }
 
     render() {
+        const { error, askPass, toHistory } = this.state
+
         if (!this.props.username) {
             return <Redirect to='/login' />
+        } else if (toHistory) {
+            return <Redirect to="/history" />
         }
 
-        const { error, askPass } = this.state
 
         return (
             <div style={{ padding: '1%', minHeight: '100vh' }}>
@@ -211,4 +228,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { delCart, saveCart })(CartPage)
+export default connect(mapStateToProps, { delCart, saveCart, checkout })(CartPage)

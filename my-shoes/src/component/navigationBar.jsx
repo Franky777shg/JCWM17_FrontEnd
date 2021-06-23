@@ -38,7 +38,7 @@ class NavigationBar extends React.Component {
                                 ?
                                 <>
                                     <Dropdown.Item >Profile</Dropdown.Item>
-                                    <Dropdown.Item >History</Dropdown.Item>
+                                    <Dropdown.Item as={Link} to="/history" >History</Dropdown.Item>
                                     <Dropdown.Item onClick={this.props.logout} >Log Out</Dropdown.Item>
                                 </>
                                 :

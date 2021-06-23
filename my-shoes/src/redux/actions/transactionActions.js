@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-export const checkout = (id, data) => {
+export const addCart = (id, data) => {
     return (dispatch) => {
         Axios.get(`http://localhost:2000/users/${id}`)
             .then(res => {
@@ -71,6 +71,51 @@ export const saveCart = (idUser, idProdCart, qtyUpdate) => {
                                 })
                             })
                     })
+            })
+    }
+}
+
+export const checkout = (idUser, dataTrans) => {
+    return (dispatch) => {
+        // untuk mencatat data history ke dalam database
+        Axios.post('http://localhost:2000/history', dataTrans)
+            .then(res => {
+                let idUser = localStorage.getItem('idUser')
+                
+                Axios.get(`http://localhost:2000/history?idUser=${idUser}`)
+                    .then(res => {
+                        return dispatch({
+                            type: 'GET_HISTORY',
+                            payload: res.data
+                        })
+                    })
+            })
+            .then(res => {
+                // untuk mengosongkan cart user
+                Axios.patch(`http://localhost:2000/users/${idUser}`, { cart: [] })
+                    .then(res => {
+                        // untuk update data di redux
+                        Axios.get(`http://localhost:2000/users/${idUser}`)
+                            .then(res => {
+                                return dispatch({
+                                    type: 'LOGIN',
+                                    payload: res.data
+                                })
+                            })
+                    })
+            })
+    }
+}
+
+export const getHistory = () => {
+    return (dispatch) => {
+        let idUser = localStorage.getItem('idUser')
+        Axios.get(`http://localhost:2000/history?idUser=${idUser}`)
+            .then(res => {
+                return dispatch({
+                    type: 'GET_HISTORY',
+                    payload: res.data
+                })
             })
     }
 }

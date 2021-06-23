@@ -8,7 +8,7 @@ import {
 } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { checkout } from '../redux/actions'
+import { addCart } from '../redux/actions'
 
 class DetailPage extends React.Component {
     constructor(props) {
@@ -66,7 +66,7 @@ class DetailPage extends React.Component {
         }
         // console.log(obj)
 
-        this.props.checkout(this.props.id, obj)
+        this.props.addCart(this.props.id, obj)
 
         this.setState({ toCart: true })
     }
@@ -171,4 +171,4 @@ const mapStateToProps = (state) => {
         dataUser: state.userReducer
     }
 }
-export default connect(mapStateToProps, { checkout })(DetailPage)
+export default connect(mapStateToProps, { addCart })(DetailPage)
