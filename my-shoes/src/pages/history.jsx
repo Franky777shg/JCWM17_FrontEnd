@@ -28,7 +28,7 @@ class HistoryPage extends React.Component {
                 <div style={{ marginTop: '10vh' }}>
                     <h1>History Page</h1>
                     <Accordion>
-                        {this.props.history.map((item, index) => {
+                        {this.props.history.reverse().map((item, index) => {
                             return (
                                 <Card key={index}>
                                     <Accordion.Toggle as={Card.Header} variant="link" eventKey={index.toString()}>
