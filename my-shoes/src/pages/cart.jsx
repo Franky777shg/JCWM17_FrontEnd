@@ -6,7 +6,8 @@ import {
     Table,
     Image,
     Button,
-    FormControl
+    FormControl,
+    Modal
 } from 'react-bootstrap'
 import { delCart, saveCart } from '../redux/actions'
 
@@ -15,7 +16,9 @@ class CartPage extends React.Component {
         super(props)
         this.state = {
             indexEdit: null,
-            qty: null
+            qty: null,
+            error: [false, ""],
+            askPass: false
         }
     }
 
@@ -122,21 +125,65 @@ class CartPage extends React.Component {
         this.setState({ indexEdit: null })
     }
 
+    onCheckout = () => {
+        if (this.props.cart.length === 0) {
+            return this.setState({ error: [true, "Your Cart is Empty!"] })
+        }
+
+        this.setState({ askPass: true })
+    }
+
+    onOKPass = () => {
+        if (this.refs.passwordUser.value !== this.props.password) {
+            return this.setState({ error: [true, "Your Password Doesn't Match"] })
+        }
+    }
+
     render() {
         if (!this.props.username) {
             return <Redirect to='/login' />
         }
 
-        console.log(this.props.cart)
+        const { error, askPass } = this.state
 
         return (
-            <div style={{ padding: '1%' }}>
+            <div style={{ padding: '1%', minHeight: '100vh' }}>
                 <NavigationBar />
-                <h1 style={{ marginTop: '10vh' }}>Cart Page</h1>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '10vh' }}>
+                    <h1>Cart Page</h1>
+                    <Button variant="outline-dark" onClick={this.onCheckout}>Checkout</Button>
+                </div>
                 <Table style={styles.table} striped bordered hover variant="dark">
                     {this.showTableHead()}
                     {this.showTableBody()}
                 </Table>
+                <Modal show={error[0]} onHide={() => this.setState({ error: [false, ""] })}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Error!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>{error[1]}</Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={() => this.setState({ error: [false, ""] })} variant="success">
+                            OK
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+                <Modal show={askPass} onHide={() => this.setState({ askPass: false })}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Please Input Your Password</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <FormControl
+                            placeholder="Input Here..."
+                            ref="passwordUser"
+                        />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={this.onOKPass} variant="success">
+                            OK
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         )
     }
@@ -159,7 +206,8 @@ const mapStateToProps = (state) => {
     return {
         username: state.userReducer.username,
         cart: state.userReducer.cart,
-        id: state.userReducer.id
+        id: state.userReducer.id,
+        password: state.userReducer.password
     }
 }
 
