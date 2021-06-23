@@ -57,7 +57,7 @@ class HomePage extends React.Component {
                         <div style={styles.contProducts}>
                             {this.state.products.map((item, index) => {
                                 return (
-                                    <Card style={{ width: '18rem', marginBottom: '15px', marginTop: '15px' }} key={index}>
+                                    <Card style={{ width: '18rem', marginTop: '15px', marginRight: '15px' }} key={index}>
                                         <div style={styles.cardImg}>
                                             <Card.Img variant="top" src={item.images[0]} />
                                         </div>
@@ -132,7 +132,6 @@ const styles = {
     },
     contProducts: {
         display: 'flex',
-        justifyContent: 'space-evenly',
         flexWrap: 'wrap',
         borderRadius: "10px"
     },
