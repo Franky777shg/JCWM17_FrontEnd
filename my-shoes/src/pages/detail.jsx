@@ -87,7 +87,12 @@ class DetailPage extends React.Component {
                 <NavigationBar />
                 <div style={styles.contTitle}>
                     <h1>Detail Page</h1>
-                    <Button variant="outline-dark" onClick={this.onCheckout}>Add to Cart</Button>
+                    {this.props.role === 'user'
+                        ?
+                        <Button variant="outline-dark" onClick={this.onCheckout}>Add to Cart</Button>
+                        :
+                        null
+                    }
                 </div>
                 <div style={{ display: 'flex', marginLeft: '1%', marginRight: '1%' }}>
                     <div style={styles.contImg}>
@@ -168,7 +173,8 @@ const mapStateToProps = (state) => {
     return {
         username: state.userReducer.username,
         id: state.userReducer.id,
-        dataUser: state.userReducer
+        dataUser: state.userReducer,
+        role: state.userReducer.role
     }
 }
 export default connect(mapStateToProps, { addCart })(DetailPage)

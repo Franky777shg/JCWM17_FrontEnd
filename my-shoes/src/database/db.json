@@ -261,7 +261,8 @@
       "username": "admin",
       "password": "admin",
       "email": "admin@gmail.com",
-      "role": "admin"
+      "role": "admin",
+      "cart": []
     },
     {
       "id": 2,

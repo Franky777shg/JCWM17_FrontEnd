@@ -1,4 +1,5 @@
 import React from 'react'
+import Axios from 'axios'
 import NavigationBar from '../component/navigationBar'
 import {
     Accordion,
@@ -8,25 +9,36 @@ import {
 } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { getHistory } from '../redux/actions'
 
-class HistoryPage extends React.Component {
+class HistoryAdmin extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            allHistory: []
+        }
+    }
+
     componentDidMount() {
-        this.props.getHistory()
+        Axios.get('http://localhost:2000/history')
+            .then(res => {
+                this.setState({ allHistory: res.data })
+            })
     }
 
     render() {
+        console.log(this.state.allHistory)
+
         if (!this.props.username) {
             return <Redirect to="/login" />
         }
-
+        
         return (
             <div style={{ padding: '1%', minHeight: '100vh' }}>
                 <NavigationBar />
                 <div style={{ marginTop: '10vh' }}>
-                    <h1>History Page</h1>
+                    <h1>History Admin</h1>
                     <Accordion>
-                        {this.props.history.reverse().map((item, index) => {
+                        {this.state.allHistory.reverse().map((item, index) => {
                             return (
                                 <Card key={index}>
                                     <Accordion.Toggle as={Card.Header} variant="link" eventKey={index.toString()}>
@@ -72,9 +84,8 @@ class HistoryPage extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        username: state.userReducer.username,
-        history: state.historyReducer.history
+        username: state.userReducer.username
     }
 }
 
-export default connect(mapStateToProps, { getHistory })(HistoryPage)
+export default connect(mapStateToProps)(HistoryAdmin)

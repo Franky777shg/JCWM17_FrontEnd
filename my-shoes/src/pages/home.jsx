@@ -83,19 +83,19 @@ class HomePage extends React.Component {
                     <div style={styles.footerList}>
                         <div style={styles.footerItem}>
                             <h6 style={styles.footerItemh6}>Product</h6>
-                            <a href="#">Download</a>
-                            <a href="#">Pricing</a>
-                            <a href="#">Locations</a>
+                            <a href="/">Download</a>
+                            <a href="/">Pricing</a>
+                            <a href="/">Locations</a>
                         </div>
                         <div style={styles.footerItem}>
                             <h6 style={styles.footerItemh6}>Engage</h6>
-                            <a href="#">FAQ</a>
-                            <a href="#">Tutorials</a>
-                            <a href="#">About Us</a>
+                            <a href="/">FAQ</a>
+                            <a href="/">Tutorials</a>
+                            <a href="/">About Us</a>
                         </div>
                         <div style={styles.footerItem}>
                             <h6 style={styles.footerItemh6}>Earn Money</h6>
-                            <a href="">Become Partners</a>
+                            <a href="/">Become Partners</a>
                         </div>
                     </div>
                     <div>
