@@ -36,20 +36,6 @@ class App extends React.Component {
           </Switch>
         </div>
       )
-    } else if (this.props.role === 'user') {
-      return (
-        <div style={{ backgroundColor: '#A3DDCB' }}>
-          <Switch>
-            <Route path="/" component={HomePage} exact />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/register" component={RegisPage} />
-            <Route path="/detail" component={DetailPage} />
-            <Route path="/cart" component={CartPage} />
-            <Route path="/history" component={HistoryPage} />
-            <Route path="*" component={NotFound} />
-          </Switch>
-        </div>
-      );
     }
     return (
       <div style={{ backgroundColor: '#A3DDCB' }}>

@@ -13,7 +13,10 @@ class HomePage extends React.Component {
         super(props)
         this.state = {
             carousels: [],
-            products: []
+            products: [],
+            page: 1,
+            prodPerPage: 5,
+            maxPage: 0
         }
     }
 
@@ -23,16 +26,52 @@ class HomePage extends React.Component {
                 this.setState({ carousels: res.data })
                 Axios.get('http://localhost:2000/products')
                     .then(res => {
-                        this.setState({ products: res.data })
+                        this.setState({ products: res.data, maxPage: Math.ceil(res.data.length / this.state.prodPerPage) })
                     })
             })
     }
 
-    render() {
-        // console.log(this.state.carousels)
-        // console.log(this.state.products)
+    onNextPage = () => {
+        this.setState({ page: this.state.page + 1 })
+    }
+
+    onPrevPage = () => {
+        this.setState({ page: this.state.page - 1 })
+    }
+
+    showProduct = () => {
+        let beginningIndex = (this.state.page - 1) * this.state.prodPerPage
+        let currentProduct = this.state.products.slice(beginningIndex, beginningIndex + this.state.prodPerPage)
+        console.log(currentProduct)
+        
         return (
-            <div style={{ backgroundColor: '#A3DDCB', paddingTop: '10vh'}}>
+            currentProduct.map((item, index) => {
+                return (
+                    <Card style={{ width: '18rem', marginTop: '15px', marginRight: '15px' }} key={index}>
+                        <div style={styles.cardImg}>
+                            <Card.Img variant="top" src={item.images[0]} />
+                        </div>
+                        <Card.Body style={styles.cardBody}>
+                            <Card.Title style={styles.cardTitle}>{item.name}</Card.Title>
+                            <Card.Text><strong>IDR {item.price.toLocaleString()},00</strong></Card.Text>
+                            <div style={styles.contButton}>
+                                <Button variant="outline-light">
+                                    <i className="far fa-bookmark"></i>
+                                </Button>
+                                <Button variant="outline-light" as={Link} to={`/detail?${item.id}`}>
+                                    <i className="fas fa-cart-plus"></i> Buy Now
+                                </Button>
+                            </div>
+                        </Card.Body>
+                    </Card>
+                )
+            })
+        )
+    }
+
+    render() {
+        return (
+            <div style={{ backgroundColor: '#A3DDCB', paddingTop: '10vh' }}>
                 <NavigationBar />
                 <div>
                     <Carousel style={styles.carousel}>
@@ -54,28 +93,17 @@ class HomePage extends React.Component {
                     </Carousel>
                     <div style={styles.sectProducts}>
                         <h1>Our Products</h1>
+                        <div style={{ display: 'flex', width: '205px', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <Button onClick={this.onPrevPage} style={{ backgroundColor: '#0A043C', border: 'none' }}>
+                                <i className="far fa-chevron-left"></i>
+                            </Button>
+                            <p style={{ marginBottom: '0' }}>Page {this.state.page} of {this.state.maxPage}</p>
+                            <Button onClick={this.onNextPage} style={{ backgroundColor: '#0A043C', border: 'none' }}>
+                                <i className="far fa-chevron-right"></i>
+                            </Button>
+                        </div>
                         <div style={styles.contProducts}>
-                            {this.state.products.map((item, index) => {
-                                return (
-                                    <Card style={{ width: '18rem', marginTop: '15px', marginRight: '15px' }} key={index}>
-                                        <div style={styles.cardImg}>
-                                            <Card.Img variant="top" src={item.images[0]} />
-                                        </div>
-                                        <Card.Body style={styles.cardBody}>
-                                            <Card.Title style={styles.cardTitle}>{item.name}</Card.Title>
-                                            <Card.Text><strong>IDR {item.price.toLocaleString()},00</strong></Card.Text>
-                                            <div style={styles.contButton}>
-                                                <Button variant="outline-light">
-                                                    <i className="far fa-bookmark"></i>
-                                                </Button>
-                                                <Button variant="outline-light" as={Link} to={`/detail?${item.id}`}>
-                                                    <i className="fas fa-cart-plus"></i> Buy Now
-                                                </Button>
-                                            </div>
-                                        </Card.Body>
-                                    </Card>
-                                )
-                            })}
+                            {this.showProduct()}
                         </div>
                     </div>
                 </div>
