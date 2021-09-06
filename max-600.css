@@ -1,0 +1,9 @@
+@media only screen and (max-width: 600px) {
+    #main-cont {
+        background-color: salmon;
+    }
+
+    #container {
+        display: block;
+    }
+}

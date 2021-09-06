@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Responsive Practice</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        height: 1000px;
+    }
+
+    #cont-1>div {
+        background-color: orange;
+    }
+
+    #cont-2 {
+        background-color: yellow;
+    }
+
+    #cont-3>div {
+        background-color: royalblue;
+    }
+
+    #cont-4>div>div {
+        background-color: gray;
+    }
+
+    @media only screen and (min-width: 320px) {
+        #cont-1 {
+            flex-grow: 1.5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #cont-1>div {
+            flex-grow: 1;
+            margin: 1%;
+        }
+
+        #cont-2 {
+            flex-grow: 1;
+            margin: 1%;
+        }
+
+        #cont-3 {
+            flex-grow: 5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #cont-3>div {
+            flex-grow: 1;
+            margin: 1%;
+        }
+
+        #cont-4 {
+            flex-grow: 2.5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #cont-4-left {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #cont-4-left>div {
+            flex-grow: 1;
+            margin: 1%;
+        }
+
+        #cont-4-right {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #cont-4-right>div {
+            flex-grow: 1;
+            margin: 1%;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        #cont-1>div {
+            flex-grow: 1;
+            margin: 1%;
+        }
+
+        #cont-2 {
+            flex-grow: 2.5;
+        }
+
+        #cont-3 {
+            flex-grow: 4;
+        }
+
+        #cont-4 {
+            flex-grow: 2;
+            flex-direction: row;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        #cont-1 {
+            flex-grow: 1;
+            flex-direction: row;
+        }
+
+        #cont-2 {
+            flex-grow: 5;
+        }
+
+        #cont-3 {
+            flex-grow: 3;
+            flex-direction: row;
+        }
+
+        #cont-4-left {
+            flex-direction: row;
+        }
+
+        #cont-4-right {
+            flex-direction: row;
+        }
+    }
+</style>
+
+<body>
+    <div id="cont-1">
+        <div></div>
+        <div></div>
+    </div>
+    <div id="cont-2"></div>
+    <div id="cont-3">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div id="cont-4">
+        <div id="cont-4-left">
+            <div></div>
+            <div></div>
+        </div>
+        <div id="cont-4-right">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</body>
+
+</html>

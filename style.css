@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    transition: 800ms;
+}
+
+#main-cont {
+    width: 500px;
+    height: 500px;
+    background-color: lime;
+    padding: 20px;
+    margin: 10px;
+}
+
+#container {
+    display: flex;
+    margin-top: 10px;
+}
+
+#container>div {
+    width: 150px;
+    height: 150px;
+    background-color: royalblue;
+    margin: 5px;
+}
